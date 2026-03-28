@@ -1,0 +1,71 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: lsun_bedroom
+  path: data/lsun_clean
+  image_size: 128
+  channels: 3
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: sngan
+  latent_dim: 100
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 32
+  epochs: 100
+  device: auto   # auto / cuda / cpu
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.0002
+  beta1: 0.0
+  beta2: 0.9
+
+# =========================
+# LOSS CONFIG
+# =========================
+loss:
+  type: hinge   # hinge loss for SNGAN
+
+# =========================
+# SAMPLING CONFIG
+# =========================
+sampling:
+  fixed_noise_size: 64
+  save_interval: 5
+  nrow: 8
+
+# =========================
+# CHECKPOINT CONFIG
+# =========================
+checkpoint:
+  save_dir: checkpoints/lsun/sngan
+  save_interval: 10
+
+# =========================
+# OUTPUT CONFIG
+# =========================
+output:
+  generated_dir: outputs/lsun/sngan
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  log_interval: 100
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: sngan_lsun_bedroom
+  seed: 42

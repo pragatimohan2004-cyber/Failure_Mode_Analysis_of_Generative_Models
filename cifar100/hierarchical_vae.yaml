@@ -1,0 +1,63 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: cifar100
+  root: data/
+  download: true
+  image_size: 32
+  channels: 3
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: ladder_vae
+  latent_levels: 3   # 🔥 you explicitly track z1, z2, z3
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 128
+  epochs: 100
+  device: auto
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.0002
+
+# =========================
+# LOSS CONFIG
+# =========================
+loss:
+  reconstruction: mse
+  kl:
+    track_per_layer: true   # 🔥 important feature
+  beta:
+    type: annealing
+    max_value: 1.0
+    warmup_epochs: 10
+
+# =========================
+# OUTPUT CONFIG
+# =========================
+output:
+  checkpoint_dir: checkpoints/cifar100/ladder_vae
+  save_checkpoint_interval: 10
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  save_csv: true
+  save_json_interval: 10
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: ladder_vae_cifar100
+  seed: 42

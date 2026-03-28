@@ -1,0 +1,51 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: lsun_bedroom
+  path: data/lsun_clean
+  image_size: 64
+  channels: 3
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: dcgan
+  z_dim: 100
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 64
+  epochs: 100
+  device: auto   # auto / cuda / cpu
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.0002
+  beta1: 0.5
+  beta2: 0.999
+
+# =========================
+# CHECKPOINT CONFIG
+# =========================
+checkpoint:
+  save_dir: checkpoints/lsun/dcgan
+  save_interval: 10
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  log_interval: 100
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: dcgan_lsun_bedroom
+  seed: 42

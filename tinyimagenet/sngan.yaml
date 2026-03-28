@@ -1,0 +1,66 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: tinyimagenet
+  path: data/tiny-imagenet-200/train
+  image_size: 64
+  channels: 3
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: sngan
+  latent_dim: 100
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 64
+  epochs: 100
+  device: auto
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.0002
+  beta1: 0.0
+  beta2: 0.9
+
+# =========================
+# LOSS CONFIG
+# =========================
+loss:
+  type: hinge
+
+# =========================
+# SAMPLING CONFIG
+# =========================
+sampling:
+  fixed_noise_size: 64
+  save_interval: 5
+  nrow: 8
+
+# =========================
+# OUTPUT CONFIG
+# =========================
+output:
+  checkpoint_dir: checkpoints/tinyimagenet/sngan
+  generated_dir: outputs/tinyimagenet/sngan
+  save_checkpoint_interval: 10
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  log_interval: 100
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: sngan_tinyimagenet
+  seed: 42

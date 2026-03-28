@@ -1,0 +1,66 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: tinyimagenet
+  path: data/tiny-imagenet-200/train
+  image_size: 64
+  channels: 3
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: ladder_vae
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 64
+  epochs: 100
+  device: auto
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.00005   # 🔥 lower LR for stability
+
+# =========================
+# LOSS CONFIG
+# =========================
+loss:
+  reconstruction: mse
+  kl:
+    normalize_per_layer: true   # 🔥 your KL / len(latents)
+  beta:
+    type: annealing
+    max_value: 1.0
+    warmup_epochs: 20   # 🔥 slower than LSUN
+
+# =========================
+# STABILITY CONFIG
+# =========================
+stability:
+  grad_clip: 5.0
+  nan_check: true
+
+# =========================
+# CHECKPOINT CONFIG
+# =========================
+checkpoint:
+  save_dir: checkpoints/tinyimagenet/ladder_vae
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  log_interval: 100
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: ladder_vae_tinyimagenet
+  seed: 42

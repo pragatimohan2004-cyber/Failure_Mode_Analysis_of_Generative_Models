@@ -1,0 +1,59 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: cifar100
+  root: data/
+  download: true
+  image_size: 32
+  channels: 3
+  num_workers: 2
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: conv_vae
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 128
+  epochs: 100
+  device: auto
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.001   # 🔥 higher than others
+
+# =========================
+# LOSS CONFIG
+# =========================
+loss:
+  reconstruction: mse
+  kl:
+    weight: 1.0   # no annealing
+
+# =========================
+# OUTPUT CONFIG
+# =========================
+output:
+  checkpoint_dir: checkpoints/cifar100/conv_vae
+  save_checkpoint_interval: 10
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  save_csv: true
+  save_json_interval: 10
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: conv_vae_cifar100
+  seed: 42

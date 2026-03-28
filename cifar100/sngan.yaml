@@ -1,0 +1,73 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: cifar100
+  path: data/processed/train
+  image_size: 32
+  channels: 3
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: sngan
+  latent_dim: 128   # ⚠️ different from DCGAN (important)
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 64
+  epochs: 100
+  device: auto
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.0002
+  beta1: 0.0
+  beta2: 0.9
+
+# =========================
+# LOSS CONFIG
+# =========================
+loss:
+  type: hinge
+
+# =========================
+# STABILITY CONFIG
+# =========================
+stability:
+  grad_clip: 5.0
+
+# =========================
+# SAMPLING CONFIG
+# =========================
+sampling:
+  fixed_noise_size: 64
+  save_interval: 5
+  nrow: 8
+
+# =========================
+# OUTPUT CONFIG
+# =========================
+output:
+  checkpoint_dir: checkpoints/cifar100/sngan
+  generated_dir: outputs/cifar100/sngan
+  save_checkpoint_interval: 10
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  log_interval: 100
+  save_loss_every_epoch: true
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: sngan_cifar100
+  seed: 42

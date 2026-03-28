@@ -1,0 +1,60 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: tinyimagenet
+  path: data/tiny-imagenet-200/train
+  image_size: 64
+  channels: 3
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: dcgan
+  latent_dim: 100
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 64
+  epochs: 100
+  device: auto
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.0002
+  beta1: 0.5
+  beta2: 0.999
+
+# =========================
+# LOSS CONFIG
+# =========================
+loss:
+  type: bce
+  label_smoothing:
+    real: 0.9
+    fake: 0.0
+
+# =========================
+# CHECKPOINT CONFIG
+# =========================
+checkpoint:
+  save_dir: checkpoints/tinyimagenet/dcgan
+  save_interval: 10
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  log_interval: 100
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: dcgan_tinyimagenet
+  seed: 42

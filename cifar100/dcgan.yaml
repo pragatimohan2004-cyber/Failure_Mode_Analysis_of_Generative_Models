@@ -1,0 +1,66 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: cifar100
+  path: data/processed/train
+  image_size: 32
+  channels: 3
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: dcgan
+  latent_dim: 100
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 128
+  epochs: 100
+  device: auto
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.0002
+  beta1: 0.5
+  beta2: 0.999
+
+# =========================
+# LOSS CONFIG
+# =========================
+loss:
+  type: bce
+
+# =========================
+# SAMPLING CONFIG
+# =========================
+sampling:
+  fixed_noise_size: 64
+  save_interval: 5
+  nrow: 8
+
+# =========================
+# OUTPUT CONFIG
+# =========================
+output:
+  checkpoint_dir: checkpoints/cifar100/dcgan
+  generated_dir: outputs/cifar100/dcgan
+  save_checkpoint_interval: 10
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  log_interval: 100
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: dcgan_cifar100
+  seed: 42

@@ -1,0 +1,61 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: lsun_bedroom
+  path: data/lsun_clean
+  image_size: 128
+  channels: 3
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: conv_vae
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 32
+  epochs: 100
+  device: auto   # auto / cuda / cpu
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.0002
+
+# =========================
+# LOSS CONFIG
+# =========================
+loss:
+  reconstruction: mse
+  beta:
+    type: annealing
+    max_value: 1.0
+    warmup_epochs: 10
+
+# =========================
+# OUTPUT CONFIG
+# =========================
+output:
+  checkpoint_dir: checkpoints/lsun/conv_vae
+  sample_dir: outputs/lsun/conv_vae
+  save_image_interval: 5
+  save_checkpoint_interval: 10
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  save_csv: true
+  save_json_interval: 10
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: conv_vae_lsun
+  seed: 42

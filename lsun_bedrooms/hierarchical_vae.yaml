@@ -1,0 +1,65 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: lsun_bedroom
+  path: data/lsun_clean
+  image_size: 128
+  channels: 3
+  num_workers: 4
+  pin_memory: true
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: ladder_vae
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 32
+  epochs: 50
+  device: auto   # auto / cuda / cpu
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.0001
+
+# =========================
+# LOSS CONFIG
+# =========================
+loss:
+  reconstruction: mse
+  beta:
+    type: annealing
+    max_value: 1.0
+    warmup_epochs: 10
+
+# =========================
+# STABILITY CONFIG
+# =========================
+stability:
+  grad_clip: 5.0
+
+# =========================
+# CHECKPOINT CONFIG
+# =========================
+checkpoint:
+  save_dir: checkpoints/lsun/ladder_vae
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  log_interval: 1
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: ladder_vae_lsun
+  seed: 42

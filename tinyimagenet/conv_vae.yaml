@@ -1,0 +1,61 @@
+# =========================
+# DATA CONFIG
+# =========================
+dataset:
+  name: tinyimagenet
+  path: data/tiny-imagenet-200/train
+  image_size: 64
+  channels: 3
+
+# =========================
+# MODEL CONFIG
+# =========================
+model:
+  name: conv_vae
+
+# =========================
+# TRAINING CONFIG
+# =========================
+training:
+  batch_size: 64
+  epochs: 100
+  device: auto
+
+# =========================
+# OPTIMIZER CONFIG
+# =========================
+optimizer:
+  lr: 0.0002
+
+# =========================
+# LOSS CONFIG
+# =========================
+loss:
+  reconstruction: mse
+  beta:
+    type: annealing
+    max_value: 1.0
+    warmup_epochs: 15   # ⚠️ different from LSUN (important)
+
+# =========================
+# OUTPUT CONFIG
+# =========================
+output:
+  checkpoint_dir: checkpoints/tinyimagenet/conv_vae
+  sample_dir: outputs/tinyimagenet/conv_vae
+  save_image_interval: 5
+  save_checkpoint_interval: 10
+
+# =========================
+# LOGGING CONFIG
+# =========================
+logging:
+  save_csv: true
+  save_json_interval: 10
+
+# =========================
+# EXPERIMENT META
+# =========================
+experiment:
+  name: conv_vae_tinyimagenet
+  seed: 42
